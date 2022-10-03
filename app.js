@@ -50,6 +50,7 @@ const List = mongoose.model("List", listSchema);
 // });
 
 app.get("/", function(req, res) {
+  Item.deleteMany({});
   Item.find({}, function(err, foundItems){
     if(foundItems.length === 0){
       Item.insertMany(defaultItems, function(err){
