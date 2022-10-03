@@ -4,6 +4,10 @@
   <h1> <%= listTitle %> </h1>
 </div>
 
+<div class="newListButtonDiv">
+  <button  class="newListButton" type="submit" name="button">New List +</button>
+</div>
+
 <div class="box">
   <% newListItems.forEach(function(item){ %>
   <form action="/delete" method="post">
@@ -17,7 +21,7 @@
 
   <form class="item" action="/" method="post">
     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-    <button type="submit" name="list" value="<%= listTitle %>">+</button>
+    <button class="itemButton" type="submit" name="list" value="<%= listTitle %>">+</button>
   </form>
 </div>
 
