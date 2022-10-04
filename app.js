@@ -18,16 +18,14 @@ const itemsSchema = {
   name: String,
 };
 
-const Item = mongoose.model("Item", itemsSchema);
+const Item = mongoose.model("Item", itemsSchema); //first argument is the singular version of our schema, 2nd argument is the schema
 
 const item1 = new Item({
   name: "Welcome to your todolist!"
 });
-
 const item2 = new Item({
   name: "Hit the + button to add a new item."
 });
-
 const item3 = new Item({
   name: "<-- Hit this to delete an item."
 });
@@ -129,10 +127,16 @@ app.post("/delete", function(req, res){
   }
 });
 
-// app.post("/newlistadd", function(req, res){
-//   Item.deleteMany({});
-//   res.redirect("/");
-// });
+app.post("/newlistadd", function(req, res){
+  Item.deleteMany({}, function(err, foundItems){
+    if(!err){
+      console.log("Successfully deleted.");
+    } else {
+      console.log(err);
+    }
+  });
+  res.redirect("/");
+});
 
 app.get("/work", function(req,res){
   res.render("list", {listTitle: "Work List", newListItems: workItems});
@@ -142,11 +146,11 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
 
-app.listen(port, function() {
+app.listen(3000, function() {
   console.log("Server has started successfully");
 });
