@@ -129,6 +129,11 @@ app.post("/delete", function(req, res){
   }
 });
 
+// app.post("/newlistadd", function(req, res){
+//   Item.deleteMany({});
+//   res.redirect("/");
+// });
+
 app.get("/work", function(req,res){
   res.render("list", {listTitle: "Work List", newListItems: workItems});
 });
